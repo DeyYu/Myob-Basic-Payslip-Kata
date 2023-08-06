@@ -1,0 +1,11 @@
+C:\Users\Syler\source\repos\Myob Basic Payslip Kata\Myob Basic Payslip Kata\bin\Debug\netcoreapp3.1\Myob Basic Payslip Kata.exe
+C:\Users\Syler\source\repos\Myob Basic Payslip Kata\Myob Basic Payslip Kata\bin\Debug\netcoreapp3.1\Myob Basic Payslip Kata.deps.json
+C:\Users\Syler\source\repos\Myob Basic Payslip Kata\Myob Basic Payslip Kata\bin\Debug\netcoreapp3.1\Myob Basic Payslip Kata.runtimeconfig.json
+C:\Users\Syler\source\repos\Myob Basic Payslip Kata\Myob Basic Payslip Kata\bin\Debug\netcoreapp3.1\Myob Basic Payslip Kata.runtimeconfig.dev.json
+C:\Users\Syler\source\repos\Myob Basic Payslip Kata\Myob Basic Payslip Kata\bin\Debug\netcoreapp3.1\Myob Basic Payslip Kata.dll
+C:\Users\Syler\source\repos\Myob Basic Payslip Kata\Myob Basic Payslip Kata\bin\Debug\netcoreapp3.1\Myob Basic Payslip Kata.pdb
+C:\Users\Syler\source\repos\Myob Basic Payslip Kata\Myob Basic Payslip Kata\obj\Debug\netcoreapp3.1\Myob Basic Payslip Kata.csprojAssemblyReference.cache
+C:\Users\Syler\source\repos\Myob Basic Payslip Kata\Myob Basic Payslip Kata\obj\Debug\netcoreapp3.1\Myob Basic Payslip Kata.AssemblyInfoInputs.cache
+C:\Users\Syler\source\repos\Myob Basic Payslip Kata\Myob Basic Payslip Kata\obj\Debug\netcoreapp3.1\Myob Basic Payslip Kata.AssemblyInfo.cs
+C:\Users\Syler\source\repos\Myob Basic Payslip Kata\Myob Basic Payslip Kata\obj\Debug\netcoreapp3.1\Myob Basic Payslip Kata.dll
+C:\Users\Syler\source\repos\Myob Basic Payslip Kata\Myob Basic Payslip Kata\obj\Debug\netcoreapp3.1\Myob Basic Payslip Kata.pdb
