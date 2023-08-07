@@ -29,7 +29,7 @@ namespace Myob_Basic_Payslip_Kata
             }
 
             //Finding tax bracket
-            static double FindTax(double Salary)
+            static double GetTax(double Salary)
             {
                 if (Salary >= 18201 & Salary <= 37000)
                 {
@@ -78,7 +78,7 @@ namespace Myob_Basic_Payslip_Kata
 
             //Calculations and rounding
             Days = GetBusinessDays(StartD, EndD);
-            Tax = FindTax(Salary);
+            Tax = GetTax(Salary);
             double RGross = Math.Round((((Salary / HW)*8)*Days), 0);
             double RTax = Math.Round((((Tax/HW)*8)* Days), 0);
             double Rsuper = Math.Round(((Super / 100) * RGross), 0);
