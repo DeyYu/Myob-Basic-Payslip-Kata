@@ -7,14 +7,51 @@ namespace Myob_Basic_Payslip_Kata
         static void Main(string[] args)
         {
             //Declaration 
-            DateTime StartDate;
-            DateTime EndDate;
-            decimal Salary;
-            decimal Super;
-            decimal Tax;
-            int Days;
-            double Months = 30.4167;
-            double TaxRatio;
+            DateTime StartD;
+            DateTime EndD;
+            double Salary;
+            double Tax;
+            double Super;
+            double Days;
+            int HW = 2080;
+
+            //Finding Business within a week
+            static double GetBusinessDays(DateTime StartD, DateTime EndD)
+            {
+                double calcBusinessDays =
+                    1 + ((EndD - StartD).TotalDays * 5 -
+                    (StartD.DayOfWeek - EndD.DayOfWeek) * 2) / 7;
+
+                if (EndD.DayOfWeek == DayOfWeek.Saturday) calcBusinessDays--;
+                if (StartD.DayOfWeek == DayOfWeek.Sunday) calcBusinessDays--;
+
+                return calcBusinessDays;
+            }
+
+            //Finding tax bracket
+            static double FindTax(double Salary)
+            {
+                if (Salary >= 18201 & Salary <= 37000)
+                {
+                    return (Salary - 18200) * 0.19;
+                }
+                else if (Salary >= 37001 & Salary <= 87000)
+                {
+                    return ((Salary - 37000) * 0.325 + 3572);
+                }
+                else if (Salary >= 87001 & Salary <= 180000)
+                {
+                    return ((Salary - 87000) * 0.37 + 19822);
+                }
+                else if (Salary >= 180001)
+                {
+                    return ((Salary - 180000) * 0.45 + 54232);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
 
             //Taking user inputs with error handling
             Console.WriteLine("Welcome to the payslip generator!\n");
@@ -22,17 +59,16 @@ namespace Myob_Basic_Payslip_Kata
                 string Fn = Console.ReadLine();
                 Console.WriteLine("Please input your surname:");
                 string Sn = Console.ReadLine();
-            //error handling
             try
             {
                 Console.WriteLine("Please input your annual salary:");
-                Salary = Convert.ToDecimal(Console.ReadLine());
+                Salary = Double.Parse(Console.ReadLine());
                 Console.WriteLine("Please input your super rate:");
-                Super = Convert.ToDecimal(Console.ReadLine());
+                Super = Double.Parse(Console.ReadLine());
                 Console.WriteLine("Please input your payment start date (e.g. DD/MM/YYYY):");
-                StartDate = DateTime.Parse(Console.ReadLine());
+                StartD = DateTime.Parse(Console.ReadLine());
                 Console.WriteLine("Please input your payment end date (e.g. DD/MM/YYYY):");
-                EndDate = DateTime.Parse(Console.ReadLine());
+                EndD = DateTime.Parse(Console.ReadLine());
             }
             catch (FormatException)
             {
@@ -40,51 +76,23 @@ namespace Myob_Basic_Payslip_Kata
                 return;
             }
 
+            //Calculations and rounding
+            Days = GetBusinessDays(StartD, EndD);
+            Tax = FindTax(Salary);
+            double RGross = Math.Round((((Salary / HW)*8)*Days), 0);
+            double RTax = Math.Round((((Tax/HW)*8)* Days), 0);
+            double Rsuper = Math.Round(((Super / 100) * RGross), 0);
 
-            //Finding tax bracket
-            Days = (EndDate - StartDate).Days;
-            if (Salary >= 18201 & Salary <= 37000)
-            {
-                TaxRatio = 0.19;
-                Tax = (Salary - 18200) * Convert.ToDecimal(TaxRatio);
-            }
-            else if (Salary >= 37001 & Salary <= 87000)
-            {
-                TaxRatio = 0.325;
-                Tax = ((Salary - 37000) * Convert.ToDecimal(TaxRatio)) + 3572;
-            }
-            else if (Salary >= 87001 & Salary <= 180000)
-            {
-                TaxRatio = 0.37;
-                Tax = ((Salary - 87000) * Convert.ToDecimal(TaxRatio)) + 19822;
-            }
-            else if (Salary >= 180001)
-            {
-                TaxRatio = 0.45;
-                Tax = ((Salary - 180000) * Convert.ToDecimal(TaxRatio)) + 54232;
-            }
-            else
-            {
-                Tax = 0;
-            }
-
-            //Calculations and Rounding
-
-            decimal RGross = Math.Round((((Salary / 12) / Convert.ToDecimal(Months)) * Days), MidpointRounding.AwayFromZero);
-            decimal RTax = Math.Round((((Tax / 12) / Convert.ToDecimal(Months)) * Days), MidpointRounding.AwayFromZero);
-            decimal Rsuper = Math.Round((((((Super / 100) * RGross) / 12) / Convert.ToDecimal(Months)) * Days), MidpointRounding.AwayFromZero);
-
-            //Present Data
+            //Present data
             Console.WriteLine("Your payslip has been generated:\n");
             Console.WriteLine("Name: " + Fn + " " + Sn);
-            Console.WriteLine("Pay Period: " + StartDate + " - " + EndDate);
+            Console.WriteLine("Pay Period: " + StartD + " - " + EndD);
             Console.WriteLine("Gross Income: " + RGross);
             Console.WriteLine("Income Tax: " + RTax);
             Console.WriteLine("Net Income: " + (RGross - RTax));
             Console.WriteLine("Super: " + Rsuper + "\n");
             Console.WriteLine("Thank you for using MYOB!");
             Console.ReadKey();
-        
         }
     }
 }
