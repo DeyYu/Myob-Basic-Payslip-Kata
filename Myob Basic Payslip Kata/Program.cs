@@ -7,7 +7,6 @@ namespace Myob_Basic_Payslip_Kata
         static void Main(string[] args)
         {
             //Declaration 
-
             DateTime StartDate;
             DateTime EndDate;
             decimal Salary;
@@ -23,7 +22,7 @@ namespace Myob_Basic_Payslip_Kata
                 string Fn = Console.ReadLine();
                 Console.WriteLine("Please input your surname:");
                 string Sn = Console.ReadLine();
-
+            //error handling
             try
             {
                 Console.WriteLine("Please input your annual salary:");
